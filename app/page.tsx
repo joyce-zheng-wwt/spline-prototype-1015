@@ -12,10 +12,15 @@ export default function Home() {
   
   // Extract basePath from next.config.js
   const basePath = '/greentally';
+  
+  // Add state to track if Spline is loaded
+  const [splineLoaded, setSplineLoaded] = useState(false);
 
   function onLoad(spline: Application) {
     splineRef.current = spline;
     setIsLoaded(true);
+    setSplineLoaded(true);
+    console.log('Spline loaded successfully');
     
     // Store initial camera position
     const camera = (spline as any)._camera;
@@ -71,14 +76,28 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Add a useEffect to log when component mounts
+  useEffect(() => {
+    console.log('Component mounted, basePath:', basePath);
+    // Log if we're running in a browser environment
+    if (typeof window !== 'undefined') {
+      console.log('Running in browser environment');
+    }
+  }, []);
+
   return (
     <div className="container">
       <div className="spline-container">
-        <Spline
-          scene={`${basePath}/scene.splinecode`}
-          wasmPath={`${basePath}/`}
-          onLoad={onLoad}
-        />
+        {typeof window !== 'undefined' && (
+          <Spline
+            scene={`${basePath}/scene.splinecode`}
+            wasmPath={`${basePath}/`}
+            onLoad={onLoad}
+            onError={(error) => {
+              console.error('Spline error:', error);
+            }}
+          />
+        )}
       </div>
       
       <div className="content">

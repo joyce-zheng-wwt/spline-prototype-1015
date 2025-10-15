@@ -4,11 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Uncomment and set this if deploying to a repository (e.g., username.github.io/repo-name)
-  // basePath: '/repo-name',
-  // assetPrefix: '/repo-name',
   basePath: '/greentally',
-assetPrefix: '/greentally',
+  assetPrefix: '/greentally',
+  // Ensure trailing slash for better path handling
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
