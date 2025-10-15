@@ -2,15 +2,15 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "/greentally",
+  "basePath": "/spline-prototype-1015",
   "redirects": [
     {
-      "source": "/greentally",
-      "destination": "/greentally/",
+      "source": "/spline-prototype-1015",
+      "destination": "/spline-prototype-1015/",
       "basePath": false,
       "internal": true,
       "statusCode": 308,
-      "regex": "^/greentally$"
+      "regex": "^/spline-prototype-1015$"
     },
     {
       "source": "/:file((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+)/",

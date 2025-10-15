@@ -11,7 +11,7 @@ export default function Home() {
   const pathname = usePathname();
   
   // Extract basePath from next.config.js
-  const basePath = '/greentally';
+  const basePath = '/spline-prototype-1015';
   
   // Add state to track if Spline is loaded
   const [splineLoaded, setSplineLoaded] = useState(false);
