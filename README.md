@@ -54,41 +54,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
      ```
    - If deploying to a different repository name, update these values accordingly
 
-4. **Create GitHub Actions workflow file**:
-   - Create a file at `.github/workflows/deploy.yml` with the following content:
-   ```yaml
-   name: Deploy to GitHub Pages
-
-   on:
-     push:
-       branches: [main]
-
-   jobs:
-     build-and-deploy:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Checkout
-           uses: actions/checkout@v3
-
-         - name: Setup Node.js
-           uses: actions/setup-node@v3
-           with:
-             node-version: 18
-
-         - name: Install dependencies
-           run: npm ci
-
-         - name: Build
-           run: npm run build
-
-         - name: Deploy
-           uses: JamesIves/github-pages-deploy-action@v4
-           with:
-             folder: out
-             branch: gh-pages
-   ```
+4. **Configure GitHub Pages**:
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under "Build and deployment" → "Source", select **GitHub Actions**
+   - This enables the workflow at `.github/workflows/deploy.yml` to deploy your site
 
 5. **Push changes** - The GitHub Action will automatically build and deploy!
+   ```bash
+   git add .
+   git commit -m "Fix deployment configuration"
+   git push
+   ```
+
+6. **Monitor the deployment**:
+   - Go to the **Actions** tab in your repository
+   - Watch the workflow run and verify it completes successfully
+   - Once complete, your site will be live at `https://YOUR_USERNAME.github.io/greentally/`
 
 ### Access Your Site
 
